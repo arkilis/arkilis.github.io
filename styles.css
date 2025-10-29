@@ -51,10 +51,24 @@ body {
 
 .page-header {
   position: relative;
-  background: radial-gradient(circle at top left, #3b82f6, #1d4ed8);
+  background: linear-gradient(
+      120deg,
+      rgba(37, 99, 235, 0.78) 0%,
+      rgba(15, 23, 42, 0.72) 65%
+    ),
+    url("assets/hero.jpg") center/cover no-repeat;
   color: #fff;
   padding: clamp(3rem, 6vw, 5rem) 1.5rem;
   text-align: center;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.55) 100%);
+  pointer-events: none;
 }
 
 .header-content {
@@ -62,6 +76,8 @@ body {
   margin: 0 auto;
   display: grid;
   gap: 1.25rem;
+  position: relative;
+  z-index: 1;
 }
 
 .theme-toggle {
@@ -81,6 +97,7 @@ body {
   cursor: pointer;
   transition: var(--transition);
   backdrop-filter: blur(8px);
+  z-index: 2;
 }
 
 .theme-toggle:hover,
@@ -96,6 +113,34 @@ body {
 
 .theme-toggle__icon {
   font-size: 1.05rem;
+}
+
+.contact-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(15, 23, 42, 0.32);
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+
+.contact-links a:hover,
+.contact-links a:focus {
+  background: rgba(15, 23, 42, 0.55);
+  transform: translateY(-1px);
 }
 
 main {
@@ -319,5 +364,10 @@ html[data-theme="dark"] {
 }
 
 html[data-theme="dark"] .page-header {
-  background: linear-gradient(135deg, #1e3a8a, #0f172a);
+  background: linear-gradient(
+      120deg,
+      rgba(15, 23, 42, 0.88) 0%,
+      rgba(30, 58, 138, 0.7) 65%
+    ),
+    url("assets/hero.jpg") center/cover no-repeat;
 }
