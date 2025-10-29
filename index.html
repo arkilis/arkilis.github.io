@@ -8,12 +8,35 @@
       name="description"
       content="A responsive portfolio showcasing mobile, web, game, and open-source projects."
     />
+    <script>
+      (function () {
+        try {
+          const storedTheme = localStorage.getItem("preferred-theme");
+          const prefersDark =
+            window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const theme = storedTheme || (prefersDark ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (error) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="page-header">
+      <button
+        type="button"
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label="Toggle color theme"
+        aria-pressed="false"
+      >
+        <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">☀️</span>
+        <span class="theme-toggle__label" data-theme-label>Light mode</span>
+      </button>
       <div class="header-content">
-        <h1>Ben's Project Portfolio</h1>
+        <h1>Ben Yang Liu's Project Portfolio</h1>
         <p>
           A curated selection of mobile apps, web experiences, game prototypes, and
           open-source contributions. All project data loads dynamically from
@@ -64,7 +87,7 @@
     </main>
 
     <footer class="page-footer">
-      <p>&copy; <span id="year"></span> Ben. Deployed on Cloudflare Pages.</p>
+      <p>&copy; <span id="year"></span> Ben. All copyrights reserved.</p>
     </footer>
 
     <script src="script.js" type="module"></script>

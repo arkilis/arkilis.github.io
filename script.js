@@ -7,9 +7,118 @@ const defaultPlatforms = {
   game: "Game",
   "open-source": "Open Source",
 };
+const themeStorageKey = "preferred-theme";
+const rootElement = document.documentElement;
+let themeToggleButton;
+let themeToggleLabel;
+let themeToggleIcon;
 
+initializeTheme();
 updateCurrentYear();
 bootstrapPortfolio();
+
+function initializeTheme() {
+  const storedTheme = getStoredTheme();
+  const systemPrefersDark =
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const attributeTheme = rootElement.getAttribute("data-theme");
+  const initialTheme = storedTheme || attributeTheme || (systemPrefersDark ? "dark" : "light");
+
+  applyTheme(initialTheme, { persist: Boolean(storedTheme) });
+  setupThemeToggle();
+
+  if (!storedTheme) {
+    observeSystemTheme();
+  }
+}
+
+function setupThemeToggle() {
+  themeToggleButton = document.getElementById("theme-toggle");
+  if (!themeToggleButton) {
+    return;
+  }
+
+  themeToggleLabel = themeToggleButton.querySelector("[data-theme-label]");
+  themeToggleIcon = themeToggleButton.querySelector("[data-theme-icon]");
+
+  syncThemeToggleUI(getCurrentTheme());
+
+  themeToggleButton.addEventListener("click", () => {
+    const nextTheme = getCurrentTheme() === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+    syncThemeToggleUI(nextTheme);
+  });
+}
+
+function observeSystemTheme() {
+  if (!window.matchMedia) {
+    return;
+  }
+
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const handleChange = (event) => {
+    if (getStoredTheme()) {
+      return;
+    }
+
+    const preferred = event.matches ? "dark" : "light";
+    applyTheme(preferred, { persist: false });
+    syncThemeToggleUI(preferred);
+  };
+
+  if (typeof mediaQuery.addEventListener === "function") {
+    mediaQuery.addEventListener("change", handleChange);
+  } else if (typeof mediaQuery.addListener === "function") {
+    mediaQuery.addListener(handleChange);
+  }
+}
+
+function applyTheme(theme, { persist = true } = {}) {
+  rootElement.setAttribute("data-theme", theme);
+
+  if (persist) {
+    try {
+      localStorage.setItem(themeStorageKey, theme);
+    } catch (error) {
+      // Ignore storage errors (e.g., privacy mode).
+    }
+  }
+}
+
+function getStoredTheme() {
+  try {
+    return localStorage.getItem(themeStorageKey);
+  } catch (error) {
+    return null;
+  }
+}
+
+function getCurrentTheme() {
+  return rootElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+}
+
+function syncThemeToggleUI(theme) {
+  if (!themeToggleButton) {
+    return;
+  }
+
+  const isDark = theme === "dark";
+  const label = isDark ? "Switch to light mode" : "Switch to dark mode";
+  const text = isDark ? "Dark mode" : "Light mode";
+  const icon = isDark ? "🌙" : "☀️";
+
+  themeToggleButton.setAttribute("aria-pressed", String(isDark));
+  themeToggleButton.setAttribute("aria-label", label);
+  themeToggleButton.setAttribute("title", label);
+
+  if (themeToggleLabel) {
+    themeToggleLabel.textContent = text;
+  }
+
+  if (themeToggleIcon) {
+    themeToggleIcon.textContent = icon;
+  }
+}
 
 function updateCurrentYear() {
   const yearTarget = document.getElementById("year");
