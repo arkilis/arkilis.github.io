@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Portfolio</title>
+    <meta
+      name="description"
+      content="A responsive portfolio showcasing mobile, web, game, and open-source projects."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-content">
+        <h1>Ben's Project Portfolio</h1>
+        <p>
+          A curated selection of mobile apps, web experiences, game prototypes, and
+          open-source contributions. All project data loads dynamically from
+          <code>projects.json</code> so updates stay in sync.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <nav class="page-nav" aria-label="Portfolio sections">
+        <a href="#mobile">Mobile</a>
+        <a href="#web">Web</a>
+        <a href="#game">Game</a>
+        <a href="#open-source">Open Source</a>
+      </nav>
+
+      <section id="mobile" class="portfolio-section" data-section="mobile">
+        <div class="section-heading">
+          <h2>Mobile</h2>
+          <p>Native and cross-platform applications crafted for iOS and Android.</p>
+        </div>
+        <div class="cards" data-cards></div>
+      </section>
+
+      <section id="web" class="portfolio-section" data-section="web">
+        <div class="section-heading">
+          <h2>Web</h2>
+          <p>Responsive web projects, platforms, and marketing experiences.</p>
+        </div>
+        <div class="cards" data-cards></div>
+      </section>
+
+      <section id="game" class="portfolio-section" data-section="game">
+        <div class="section-heading">
+          <h2>Game</h2>
+          <p>Gameplay experiments built with Unity and other engines.</p>
+        </div>
+        <div class="cards" data-cards></div>
+      </section>
+
+      <section id="open-source" class="portfolio-section" data-section="open-source">
+        <div class="section-heading">
+          <h2>Open Source</h2>
+          <p>Libraries and packages shared with the developer community.</p>
+        </div>
+        <div class="cards" data-cards></div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>&copy; <span id="year"></span> Ben. Deployed on Cloudflare Pages.</p>
+    </footer>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,289 @@
+{
+  "mobile": [
+    {
+      "title": "White noise",
+      "platform": "Android",
+      "feature": "Kotlin",
+      "date": "2022",
+      "url": "https://play.google.com/store/apps/details?id=com.flyingbits.whitenoise",
+      "desc": "Cal down and focus on work & study",
+      "cover_image": ""
+    },
+    {
+      "title": "Baby white noise",
+      "platform": "Android",
+      "feature": "Kotlin",
+      "date": "2022",
+      "url": "https://play.google.com/store/apps/details?id=com.flyingbits.babywhitenoise",
+      "desc": "Calm down your baby and sleep well",
+      "cover_image": ""
+    },
+    {
+      "title": "QR Reader",
+      "platform": "Android",
+      "feature": "Flutter",
+      "date": "2021",
+      "url": "https://play.google.com/store/apps/details?id=com.flyingbit.barcodereader",
+      "desc": "Professional QR Reader for Android",
+      "cover_image": ""
+    },
+    {
+      "title": "QR Reader",
+      "platform": "iOS",
+      "feature": "Flutter",
+      "date": "2021",
+      "url": "https://apps.apple.com/us/app/barcode-and-qr-code-reader/id1562612927",
+      "desc": "Professional QR Reader for iOS",
+      "cover_image": ""
+    },
+    {
+      "title": "Days gone",
+      "platform": "iOS",
+      "feature": "SwiftUI",
+      "date": "2021",
+      "url": "https://apps.apple.com/au/app/days-gone/id1570095468",
+      "desc": "An elegant year tracking widget on your iPhone/iPad",
+      "cover_image": ""
+    },
+    {
+      "title": "AC Pocket Guide | Animal crossing fish & insects",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2020",
+      "url": "https://apps.apple.com/au/app/ac-pocket-guide/id1506718548",
+      "desc": "Multi-language animal crossing pocket guide",
+      "cover_image": ""
+    },
+    {
+      "title": "AC Pocket Guide | Animal crossing fish & insects",
+      "platform": "Android",
+      "feature": "Java",
+      "date": "2020",
+      "url": "https://play.google.com/store/apps/details?id=com.flyingbits.animalcrossingpocketguide",
+      "desc": "Multi-language animal crossing pocket guide",
+      "cover_image": ""
+    },
+    {
+      "title": "Driving Theory Test: NSW",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2019",
+      "url": "https://apps.apple.com//app/driving-theory-test-nsw/id1499022369",
+      "desc": "Multi-language animal crossing pocket guide",
+      "cover_image": ""
+    },
+    {
+      "title": "Wordo - Spell to score",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2019",
+      "url": "https://apps.apple.com/us/app/wordo-spell-to-score/id1492666237",
+      "desc": "Multi-language animal crossing pocket guide",
+      "cover_image": ""
+    },
+    {
+      "title": "Trivia ONE | Best trivia game",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2018",
+      "url": "https://apps.apple.com/us/app/trivia-one/id1463039469",
+      "desc": "More than 3000 quizzes and questions, including general knowledges, history, vehicles, music, and so much more.",
+      "cover_image": ""
+    },
+    {
+      "title": "Words of the Day",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2018",
+      "url": "https://apps.apple.com/au/app/words-of-day/id1451553822",
+      "desc": "A quote app with push notification. After declined by Apple's awesome app review team, it finally went to App Store.",
+      "cover_image": ""
+    },
+    {
+      "title": "Citizenship Test 2019 (iOS)",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2017",
+      "url": "https://apps.apple.com/au/app/citizenship-test-2019/id1487289735",
+      "desc": "Australia Citizenship Test in 2019, which will answer almost every question that you need before you attend the test.",
+      "cover_image": ""
+    },
+    {
+      "title": "Citizenship Test 2019 (Android)",
+      "platform": "Android",
+      "feature": "Java",
+      "date": "2017",
+      "url": "https://play.google.com/store/apps/details?id=com.flyingbits.australiacitizenshiptest&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1",
+      "desc": "Australia Citizenship Test in 2019, which will answer almost every question that you need before you attend the test.",
+      "cover_image": ""
+    },
+    {
+      "title": "Australian Slang (iOS)",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2016",
+      "url": "https://apps.apple.com/us/app/aussie-slang/id1459336055",
+      "desc": "Aussie slang is an interesting app which let you know what real Australian people speak everyday.",
+      "cover_image": ""
+    },
+    {
+      "title": "Australian Slang (Android)",
+      "platform": "Android",
+      "feature": "Java",
+      "date": "2016",
+      "url": "https://play.google.com/store/apps/details?id=com.flyingbits.aussieslangandroid&rdid=com.flyingbits.aussieslangandroid",
+      "desc": "Aussie slang is an interesting app which let you know what real Australian people speak everyday.",
+      "cover_image": ""
+    },
+    {
+      "title": "Australian Driving Test",
+      "platform": "Android",
+      "feature": "Java",
+      "date": "2016",
+      "url": "https://play.google.com/store/apps/details?id=com.flyingbits.australiandrivingtest",
+      "desc": "More than 1000 driving test questions with answers are for you to practise to help you pass the test",
+      "cover_image": ""
+    },
+    {
+      "title": "My NBN",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2015",
+      "url": "https://itunes.apple.com/us/app/my-nbn/id1247260936?mt=8",
+      "desc": "code and publish to App Store in 2 weeks. Search by typing address or just use current location will let you know the NBN status of that address (Australian Address only).",
+      "cover_image": ""
+    },
+    {
+      "title": "Wheat PTI",
+      "platform": "iOS",
+      "feature": "Objective-C",
+      "date": "2017",
+      "url": "https://itunes.apple.com/au/app/wheat-pti/id1159180918?mt=8",
+      "desc": "A productivity tool that enables farmers and researchers to plan and diagnose their farming activities anytime anywhere.<br/><br/><br/>",
+      "cover_image": ""
+    },
+    {
+      "title": "BackPaddock",
+      "platform": "iOS",
+      "feature": "Objective-C",
+      "date": "2017",
+      "url": "https://itunes.apple.com/au/app/back-paddock-mobile-hd/id608154225?mt=8",
+      "desc": "A productivity tool that enables farmers and researchers to plan and diagnose their farming activities anytime anywhere.<br/><br/><br/>",
+      "cover_image": ""
+    },
+    {
+      "title": "My Shopping List",
+      "platform": "iOS",
+      "feature": "Objective-C",
+      "date": "2017",
+      "url": "https://itunes.apple.com/au/app/my-shopping-list/id1086813489",
+      "desc": "A handy shoppling list tool enable you to keep a clean mind while shopping.<br/><br/><br/><br/><br/>",
+      "cover_image": ""
+    },
+    {
+      "title": "Sino-Aus Film Festival",
+      "platform": "iOS",
+      "feature": "Objective-C",
+      "date": "2014",
+      "url": "https://itunes.apple.com/au/app/%E4%B8%AD%E6%BE%B3%E5%9B%BD%E9%99%85%E7%94%B5%E5%BD%B1%E8%8A%82/id1159227021?mt=8",
+      "desc": "An event app contains activities for Sino-Aus Film Festival. Details inside.",
+      "cover_image": ""
+    },
+    {
+      "title": "Sunsuper - manage your super",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2018",
+      "url": "https://itunes.apple.com/au/app/sunsuper/id1232128380",
+      "desc": "Maintain and release new features for Sunsuper's official apps",
+      "cover_image": ""
+    },
+    {
+      "title": "Sunsuper - manage your super",
+      "platform": "Android",
+      "feature": "Java",
+      "date": "2018",
+      "url": "https://play.google.com/store/apps/details?id=com.sunsuper.prod",
+      "desc": "Maintain and release new features for Sunsuper's official apps",
+      "cover_image": ""
+    }
+  ],
+  "web": [
+    {
+      "title": "ASX Data",
+      "feature": "Python, Flask, Side Project",
+      "date": "2012",
+      "url": "https://asxdata.com.au",
+      "desc": "$0 fee for ASX investors to download EOD data daily",
+      "cover_image": ""
+    },
+    {
+      "title": "Wheat PTI CMS",
+      "feature": "Python, Flask",
+      "date": "2017",
+      "url": "https://wheatpti.backpaddock.com.au:8889/",
+      "desc": "Wheat PTI backend data management system provides RESTful API",
+      "cover_image": ""
+    },
+    {
+      "title": "CPSkin Care E-commerce",
+      "feature": "PHP, Wordpress",
+      "date": "2011",
+      "url": "http://cpskin.com.au/",
+      "desc": "E-Commerce for CPSkin products",
+      "cover_image": ""
+    },
+    {
+      "title": "RedBroking Insurance",
+      "feature": "PHP, Wordpress",
+      "date": "2011",
+      "url": "https://redbroking.com/",
+      "desc": "Business website for local insurance company",
+      "cover_image": ""
+    },
+    {
+      "title": "AGC Property",
+      "feature": "PHP, Wordpress",
+      "date": "2013",
+      "url": "https://agcdev.flyingbits.com.au/",
+      "desc": "Real Estate Business website",
+      "cover_image": ""
+    }
+  ],
+  "game": [
+    {
+      "title": "2D Arkanoid",
+      "feature": "C#, Unity",
+      "date": "2013",
+      "url": "https://github.com/arkilis/Arkanoid",
+      "desc": "2D Arkanoid game in Unity",
+      "cover_image": ""
+    },
+    {
+      "title": "Ping Pong",
+      "feature": "C#, Unity",
+      "date": "2013",
+      "url": "https://github.com/arkilis/2DPingPong",
+      "desc": "2D Pingpng game in Unity",
+      "cover_image": ""
+    }
+  ],
+  "open-source": [
+    {
+      "title": "Telstra-sms-sdk",
+      "feature": "Python, Pip",
+      "date": "2017",
+      "url": "https://pypi.org/project/telstra-sms-sdk/",
+      "desc": "A fully tested Python SDK allow you to send sms in a more easy way!",
+      "cover_image": ""
+    },
+    {
+      "title": "React Component",
+      "feature": "JavaScript, React",
+      "date": "2017",
+      "url": "https://www.npmjs.com/package/react-appstore-button",
+      "desc": "An React component which help you to create a App Store button easily.",
+      "cover_image": ""
+    }
+  ]
+}
