@@ -7,6 +7,13 @@ const defaultPlatforms = {
   game: "Game",
   "open-source": "Open Source",
 };
+
+// Updated proxy endpoints with better formatting
+const playStoreProxyEndpoints = [
+  (packageId) => `https://r.jina.ai/https://play.google.com/store/apps/details?id=${packageId}&hl=en&gl=US`,
+  (packageId) => `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://play.google.com/store/apps/details?id=${packageId}&hl=en&gl=US`)}`,
+];
+
 const themeStorageKey = "preferred-theme";
 const rootElement = document.documentElement;
 let themeToggleButton;
@@ -195,7 +202,8 @@ function createProjectCard(project, sectionKey) {
     .then((src) => {
       img.src = src;
     })
-    .catch(() => {
+    .catch((error) => {
+      console.warn(`Failed to load image for ${project.title}:`, error);
       img.src = placeholderImage;
     });
 
@@ -288,37 +296,33 @@ async function fetchAppleArtwork(appStoreUrl) {
   }
 
   const appId = appIdMatch[1];
-  if (appleLookupCache.has(appId)) {
-    return appleLookupCache.get(appId);
+  const countryCode = extractAppleCountry(appStoreUrl);
+  const cacheKey = `${appId}_${countryCode}`;
+
+  if (appleLookupCache.has(cacheKey)) {
+    return appleLookupCache.get(cacheKey);
   }
 
-  const lookupUrl = `https://itunes.apple.com/lookup?id=${appId}`;
-  const promise = fetch(lookupUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Lookup failed with status ${response.status}`);
+  const promise = resolveAppleArtwork(appId, countryCode).catch(async (error) => {
+    if (countryCode !== "US") {
+      try {
+        const fallbackKey = `${appId}_US`;
+        if (!appleLookupCache.has(fallbackKey)) {
+          const fallbackPromise = resolveAppleArtwork(appId, "US");
+          appleLookupCache.set(fallbackKey, fallbackPromise);
+          return await fallbackPromise;
+        }
+        return await appleLookupCache.get(fallbackKey);
+      } catch (fallbackError) {
+        throw fallbackError;
       }
-      return response.json();
-    })
-    .then((payload) => {
-      const [result] = payload.results || [];
-      if (!result) {
-        throw new Error("No App Store data returned");
-      }
+    }
 
-      const artwork =
-        result.artworkUrl512 ||
-        result.artworkUrl100?.replace(/100x100bb/, "512x512bb") ||
-        result.artworkUrl60;
+    appleLookupCache.delete(cacheKey);
+    throw error;
+  });
 
-      if (!artwork) {
-        throw new Error("No artwork URL available");
-      }
-
-      return artwork;
-    });
-
-  appleLookupCache.set(appId, promise);
+  appleLookupCache.set(cacheKey, promise);
   return promise;
 }
 
@@ -332,22 +336,10 @@ async function fetchGoogleArtwork(playStoreUrl) {
     return googleLookupCache.get(packageId);
   }
 
-  const lookupUrl = `https://play.google.com/store/apps/details?id=${packageId}&hl=en&gl=US`;
-  const promise = fetch(lookupUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Play Store request failed (${response.status})`);
-      }
-      return response.text();
-    })
-    .then((html) => {
-      const match = html.match(/<meta\s+property="og:image"\s+content="(.*?)"/i);
-      if (!match || !match[1]) {
-        throw new Error("No og:image tag found");
-      }
-      return match[1];
-    });
-
+  const promise = resolveGoogleArtwork(packageId).catch((error) => {
+    googleLookupCache.delete(packageId);
+    throw error;
+  });
   googleLookupCache.set(packageId, promise);
   return promise;
 }
@@ -365,4 +357,93 @@ function extractPlayStoreId(url) {
 
   const match = url.match(/id=([A-Za-z0-9._]+)/);
   return match ? match[1] : "";
+}
+
+async function resolveGoogleArtwork(packageId) {
+  let lastError = null;
+
+  const requestInit = {
+    cache: "force-cache",
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+      "Accept-Language": "en-US,en;q=0.9",
+    },
+  };
+
+  for (const endpoint of playStoreProxyEndpoints) {
+    const lookupUrl = typeof endpoint === "function" ? endpoint(packageId) : endpoint;
+
+    try {
+      console.log(`Trying to fetch from: ${lookupUrl}`);
+      const response = await fetch(lookupUrl, requestInit);
+      
+      if (!response.ok) {
+        throw new Error(`Proxy request failed (${response.status})`);
+      }
+
+      const html = await response.text();
+      
+      // Try multiple regex patterns to find the image
+      const patterns = [
+        /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i,
+        /<meta\s+content=["']([^"']+)["']\s+property=["']og:image["']/i,
+        /<meta\s+name=["']og:image["']\s+content=["']([^"']+)["']/i,
+      ];
+
+      let imageUrl = null;
+      for (const pattern of patterns) {
+        const match = html.match(pattern);
+        if (match && match[1]) {
+          imageUrl = match[1].replace(/&amp;/g, "&");
+          break;
+        }
+      }
+
+      if (imageUrl) {
+        console.log(`Successfully found image: ${imageUrl}`);
+        return imageUrl;
+      }
+
+      throw new Error("No og:image tag found in response");
+    } catch (error) {
+      console.warn(`Failed with endpoint ${lookupUrl}:`, error);
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error("Unable to retrieve Google Play artwork");
+}
+
+function extractAppleCountry(url) {
+  const match = url.match(/apps\.apple\.com\/(\w{2})\//i);
+  if (match && match[1]) {
+    return match[1].toUpperCase();
+  }
+  return "US";
+}
+
+async function resolveAppleArtwork(appId, country) {
+  const lookupUrl = `https://itunes.apple.com/lookup?id=${appId}&country=${country}`;
+  const response = await fetch(lookupUrl, { cache: "force-cache" });
+  if (!response.ok) {
+    throw new Error(`Lookup failed with status ${response.status}`);
+  }
+
+  const payload = await response.json();
+  const [result] = payload.results || [];
+  if (!result) {
+    throw new Error("No App Store data returned");
+  }
+
+  const artwork =
+    result.artworkUrl512 ||
+    result.artworkUrl100?.replace(/100x100bb/, "512x512bb") ||
+    result.artworkUrl60;
+
+  if (!artwork) {
+    throw new Error("No artwork URL available");
+  }
+
+  return artwork;
 }

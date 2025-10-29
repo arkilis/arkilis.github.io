@@ -51,12 +51,7 @@ body {
 
 .page-header {
   position: relative;
-  background: linear-gradient(
-      120deg,
-      rgba(37, 99, 235, 0.78) 0%,
-      rgba(15, 23, 42, 0.72) 65%
-    ),
-    url("assets/hero.jpg") center/cover no-repeat;
+  background: url("assets/hero.jpg") center/cover no-repeat;
   color: #fff;
   padding: clamp(3rem, 6vw, 5rem) 1.5rem;
   text-align: center;
@@ -67,7 +62,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.55) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.6) 100%);
   pointer-events: none;
 }
 
@@ -125,7 +120,7 @@ body {
 .contact-links a {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   padding: 0.55rem 1.15rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.45);
@@ -135,6 +130,10 @@ body {
   background: rgba(15, 23, 42, 0.32);
   backdrop-filter: blur(8px);
   transition: var(--transition);
+}
+
+.contact-links__icon {
+  font-size: 1.05rem;
 }
 
 .contact-links a:hover,
@@ -240,12 +239,15 @@ main {
 .card-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
+  max-width: 228px;
+  max-height: 228px;
   border-radius: calc(var(--border-radius) - 6px);
   overflow: hidden;
   background: #e2e8f0;
   display: grid;
   place-items: center;
+  justify-self: center;
 }
 
 .card-image img {
@@ -364,10 +366,5 @@ html[data-theme="dark"] {
 }
 
 html[data-theme="dark"] .page-header {
-  background: linear-gradient(
-      120deg,
-      rgba(15, 23, 42, 0.88) 0%,
-      rgba(30, 58, 138, 0.7) 65%
-    ),
-    url("assets/hero.jpg") center/cover no-repeat;
+  background: url("assets/hero.jpg") center/cover no-repeat;
 }

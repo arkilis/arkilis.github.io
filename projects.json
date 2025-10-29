@@ -7,7 +7,7 @@
       "date": "2022",
       "url": "https://play.google.com/store/apps/details?id=com.flyingbits.whitenoise",
       "desc": "Cal down and focus on work & study",
-      "cover_image": ""
+      "cover_image": "https://arkilis.github.io/assets/white-noise.png"
     },
     {
       "title": "Baby white noise",
@@ -16,25 +16,7 @@
       "date": "2022",
       "url": "https://play.google.com/store/apps/details?id=com.flyingbits.babywhitenoise",
       "desc": "Calm down your baby and sleep well",
-      "cover_image": ""
-    },
-    {
-      "title": "QR Reader",
-      "platform": "Android",
-      "feature": "Flutter",
-      "date": "2021",
-      "url": "https://play.google.com/store/apps/details?id=com.flyingbit.barcodereader",
-      "desc": "Professional QR Reader for Android",
-      "cover_image": ""
-    },
-    {
-      "title": "QR Reader",
-      "platform": "iOS",
-      "feature": "Flutter",
-      "date": "2021",
-      "url": "https://apps.apple.com/us/app/barcode-and-qr-code-reader/id1562612927",
-      "desc": "Professional QR Reader for iOS",
-      "cover_image": ""
+      "cover_image": "https://arkilis.github.io/assets/baby-white-noise.png"
     },
     {
       "title": "Days gone",
@@ -205,6 +187,26 @@
       "date": "2018",
       "url": "https://play.google.com/store/apps/details?id=com.sunsuper.prod",
       "desc": "Maintain and release new features for Sunsuper's official apps",
+      "cover_image": ""
+    }
+  ],
+  "Stickers" : [
+    {
+      "title": "I Love You Mum Sticker",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2025",
+      "url": "https://apps.apple.com/us/app/i-love-you-mum-sticker/id6745303070",
+      "desc": "I Love You Mum Sticker for iMessage",
+      "cover_image": ""
+    },
+    {
+      "title": "ANZAC Day Stickers",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2025",
+      "url": "https://apps.apple.com/us/app/anzac-day-stickers/id6744629373",
+      "desc": "ANZAC Day Stickers",
       "cover_image": ""
     }
   ],
