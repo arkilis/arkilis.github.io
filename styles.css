@@ -177,6 +177,11 @@ main {
   border-color: transparent;
 }
 
+.portfolio-sections {
+  display: grid;
+  gap: clamp(3rem, 5vw, 4.25rem);
+}
+
 .portfolio-section {
   display: grid;
   gap: clamp(1.5rem, 3vw, 2.5rem);

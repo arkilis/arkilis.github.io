@@ -6,9 +6,18 @@ const defaultPlatforms = {
   web: "Web",
   game: "Game",
   "open-source": "Open Source",
+  stickers: "Stickers",
 };
 
-// Updated proxy endpoints with better formatting
+const sectionDescriptions = {
+  mobile: "Native and cross-platform applications crafted for iOS and Android.",
+  web: "Responsive web projects, platforms, and marketing experiences.",
+  game: "Gameplay experiments built with Unity and other engines.",
+  "open-source": "Libraries and packages shared with the developer community.",
+  stickers: "Sticker packs designed for iMessage and other messaging platforms.",
+};
+
+// Proxy endpoints to bypass Play Store CORS restrictions
 const playStoreProxyEndpoints = [
   (packageId) => `https://r.jina.ai/https://play.google.com/store/apps/details?id=${packageId}&hl=en&gl=US`,
   (packageId) => `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://play.google.com/store/apps/details?id=${packageId}&hl=en&gl=US`)}`,
@@ -144,13 +153,7 @@ async function bootstrapPortfolio() {
     }
 
     const data = await response.json();
-    const sections = document.querySelectorAll(".portfolio-section");
-
-    sections.forEach((section) => {
-      const key = section.dataset.section;
-      const projects = Array.isArray(data[key]) ? data[key] : [];
-      renderSection(section, key, projects);
-    });
+    renderPortfolioSections(data);
   } catch (error) {
     console.error(error);
     if (main) {
@@ -161,6 +164,82 @@ async function bootstrapPortfolio() {
       main.prepend(notice);
     }
   }
+}
+
+function renderPortfolioSections(portfolioData) {
+  const nav = document.querySelector("[data-nav]");
+  const sectionsContainer = document.querySelector("[data-sections]");
+
+  if (!nav || !sectionsContainer) {
+    return;
+  }
+
+  nav.innerHTML = "";
+  sectionsContainer.innerHTML = "";
+
+  Object.entries(portfolioData).forEach(([rawKey, items]) => {
+    const sectionKey = rawKey.trim();
+    const projects = Array.isArray(items) ? items : [];
+    const rawSlug = slugify(sectionKey);
+    const slug = rawSlug || `section-${nav.childElementCount + 1}`;
+
+    nav.appendChild(createNavLink(sectionKey, slug));
+
+    const sectionEl = buildSectionElement(sectionKey, slug);
+    sectionsContainer.appendChild(sectionEl);
+    renderSection(sectionEl, sectionKey, projects);
+  });
+}
+
+function createNavLink(sectionKey, slug) {
+  const link = document.createElement("a");
+  link.href = `#${slug}`;
+  link.textContent = formatSectionTitle(sectionKey);
+  return link;
+}
+
+function buildSectionElement(sectionKey, slug) {
+  const section = document.createElement("section");
+  section.className = "portfolio-section";
+  section.id = slug;
+  section.dataset.section = sectionKey;
+
+  const headingWrapper = document.createElement("div");
+  headingWrapper.className = "section-heading";
+
+  const heading = document.createElement("h2");
+  heading.textContent = formatSectionTitle(sectionKey);
+
+  const helper = document.createElement("p");
+  helper.textContent =
+    sectionDescriptions[slug] || `Highlights from the ${formatSectionTitle(sectionKey)} collection.`;
+
+  const cards = document.createElement("div");
+  cards.className = "cards";
+  cards.setAttribute("data-cards", "");
+
+  headingWrapper.append(heading, helper);
+  section.append(headingWrapper, cards);
+
+  return section;
+}
+
+function formatSectionTitle(sectionKey) {
+  return sectionKey
+    .replace(/[_-]+/g, " ")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function slugify(value) {
+  return value
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function renderSection(sectionEl, sectionKey, projects) {
@@ -254,18 +333,23 @@ function inferPlatform(project, sectionKey) {
   if (project.platform) {
     return project.platform;
   }
-  return defaultPlatforms[sectionKey] || "Unknown";
+  return (
+    defaultPlatforms[sectionKey.toLowerCase()] ||
+    formatSectionTitle(sectionKey) ||
+    "Unknown"
+  );
 }
 
 async function resolveImageSource(project, sectionKey) {
-  if (sectionKey === "mobile") {
-    return resolveMobileImage(project);
-  }
-
   const coverImage = (project.cover_image || "").trim();
   if (coverImage) {
     return coverImage;
   }
+
+  if (sectionKey.toLowerCase() === "mobile" || isMobilePlatform(project)) {
+    return resolveMobileImage(project);
+  }
+
   return placeholderImage;
 }
 
@@ -375,9 +459,8 @@ async function resolveGoogleArtwork(packageId) {
     const lookupUrl = typeof endpoint === "function" ? endpoint(packageId) : endpoint;
 
     try {
-      console.log(`Trying to fetch from: ${lookupUrl}`);
       const response = await fetch(lookupUrl, requestInit);
-      
+
       if (!response.ok) {
         throw new Error(`Proxy request failed (${response.status})`);
       }
@@ -401,7 +484,6 @@ async function resolveGoogleArtwork(packageId) {
       }
 
       if (imageUrl) {
-        console.log(`Successfully found image: ${imageUrl}`);
         return imageUrl;
       }
 
@@ -446,4 +528,9 @@ async function resolveAppleArtwork(appId, country) {
   }
 
   return artwork;
+}
+
+function isMobilePlatform(project) {
+  const platform = (project.platform || "").toLowerCase();
+  return platform.includes("ios") || platform.includes("android");
 }

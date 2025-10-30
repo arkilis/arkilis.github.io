@@ -43,7 +43,7 @@
       "date": "2020",
       "url": "https://play.google.com/store/apps/details?id=com.flyingbits.animalcrossingpocketguide",
       "desc": "Multi-language animal crossing pocket guide",
-      "cover_image": ""
+      "cover_image": "https://arkilis.github.io/assets/ac-pocket-guide.png"
     },
     {
       "title": "Driving Theory Test: NSW",
@@ -59,17 +59,8 @@
       "platform": "iOS",
       "feature": "Swift",
       "date": "2019",
-      "url": "https://apps.apple.com/us/app/wordo-spell-to-score/id1492666237",
+      "url": "https://apps.apple.com/au/app/wordo-spell-to-score/id1492666237",
       "desc": "Multi-language animal crossing pocket guide",
-      "cover_image": ""
-    },
-    {
-      "title": "Trivia ONE | Best trivia game",
-      "platform": "iOS",
-      "feature": "Swift",
-      "date": "2018",
-      "url": "https://apps.apple.com/us/app/trivia-one/id1463039469",
-      "desc": "More than 3000 quizzes and questions, including general knowledges, history, vehicles, music, and so much more.",
       "cover_image": ""
     },
     {
@@ -97,14 +88,14 @@
       "date": "2017",
       "url": "https://play.google.com/store/apps/details?id=com.flyingbits.australiacitizenshiptest&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1",
       "desc": "Australia Citizenship Test in 2019, which will answer almost every question that you need before you attend the test.",
-      "cover_image": ""
+      "cover_image": "https://arkilis.github.io/assets/citizenship-test.png"
     },
     {
       "title": "Australian Slang (iOS)",
       "platform": "iOS",
       "feature": "Swift",
       "date": "2016",
-      "url": "https://apps.apple.com/us/app/aussie-slang/id1459336055",
+      "url": "https://apps.apple.com/au/app/aussie-slang/id1459336055",
       "desc": "Aussie slang is an interesting app which let you know what real Australian people speak everyday.",
       "cover_image": ""
     },
@@ -115,7 +106,7 @@
       "date": "2016",
       "url": "https://play.google.com/store/apps/details?id=com.flyingbits.aussieslangandroid&rdid=com.flyingbits.aussieslangandroid",
       "desc": "Aussie slang is an interesting app which let you know what real Australian people speak everyday.",
-      "cover_image": ""
+      "cover_image": "https://arkilis.github.io/assets/aussie-slang.png"
     },
     {
       "title": "Australian Driving Test",
@@ -124,51 +115,15 @@
       "date": "2016",
       "url": "https://play.google.com/store/apps/details?id=com.flyingbits.australiandrivingtest",
       "desc": "More than 1000 driving test questions with answers are for you to practise to help you pass the test",
-      "cover_image": ""
+      "cover_image": "https://arkilis.github.io/assets/driving-test.png"
     },
     {
       "title": "My NBN",
       "platform": "iOS",
       "feature": "Swift",
       "date": "2015",
-      "url": "https://itunes.apple.com/us/app/my-nbn/id1247260936?mt=8",
+      "url": "https://itunes.apple.com/au/app/my-nbn/id1247260936?mt=8",
       "desc": "code and publish to App Store in 2 weeks. Search by typing address or just use current location will let you know the NBN status of that address (Australian Address only).",
-      "cover_image": ""
-    },
-    {
-      "title": "Wheat PTI",
-      "platform": "iOS",
-      "feature": "Objective-C",
-      "date": "2017",
-      "url": "https://itunes.apple.com/au/app/wheat-pti/id1159180918?mt=8",
-      "desc": "A productivity tool that enables farmers and researchers to plan and diagnose their farming activities anytime anywhere.<br/><br/><br/>",
-      "cover_image": ""
-    },
-    {
-      "title": "BackPaddock",
-      "platform": "iOS",
-      "feature": "Objective-C",
-      "date": "2017",
-      "url": "https://itunes.apple.com/au/app/back-paddock-mobile-hd/id608154225?mt=8",
-      "desc": "A productivity tool that enables farmers and researchers to plan and diagnose their farming activities anytime anywhere.<br/><br/><br/>",
-      "cover_image": ""
-    },
-    {
-      "title": "My Shopping List",
-      "platform": "iOS",
-      "feature": "Objective-C",
-      "date": "2017",
-      "url": "https://itunes.apple.com/au/app/my-shopping-list/id1086813489",
-      "desc": "A handy shoppling list tool enable you to keep a clean mind while shopping.<br/><br/><br/><br/><br/>",
-      "cover_image": ""
-    },
-    {
-      "title": "Sino-Aus Film Festival",
-      "platform": "iOS",
-      "feature": "Objective-C",
-      "date": "2014",
-      "url": "https://itunes.apple.com/au/app/%E4%B8%AD%E6%BE%B3%E5%9B%BD%E9%99%85%E7%94%B5%E5%BD%B1%E8%8A%82/id1159227021?mt=8",
-      "desc": "An event app contains activities for Sino-Aus Film Festival. Details inside.",
       "cover_image": ""
     },
     {
@@ -178,7 +133,7 @@
       "date": "2018",
       "url": "https://itunes.apple.com/au/app/sunsuper/id1232128380",
       "desc": "Maintain and release new features for Sunsuper's official apps",
-      "cover_image": ""
+      "cover_image": "https://arkilis.github.io/assets/sunsuper.png"
     },
     {
       "title": "Sunsuper - manage your super",
@@ -187,7 +142,7 @@
       "date": "2018",
       "url": "https://play.google.com/store/apps/details?id=com.sunsuper.prod",
       "desc": "Maintain and release new features for Sunsuper's official apps",
-      "cover_image": ""
+      "cover_image": "https://arkilis.github.io/assets/sunsuper.png"
     }
   ],
   "Stickers" : [
@@ -196,7 +151,7 @@
       "platform": "iOS",
       "feature": "Swift",
       "date": "2025",
-      "url": "https://apps.apple.com/us/app/i-love-you-mum-sticker/id6745303070",
+      "url": "https://apps.apple.com/au/app/i-love-you-mum-sticker/id6745303070",
       "desc": "I Love You Mum Sticker for iMessage",
       "cover_image": ""
     },
@@ -205,8 +160,35 @@
       "platform": "iOS",
       "feature": "Swift",
       "date": "2025",
-      "url": "https://apps.apple.com/us/app/anzac-day-stickers/id6744629373",
+      "url": "https://apps.apple.com/au/app/anzac-day-stickers/id6744629373",
       "desc": "ANZAC Day Stickers",
+      "cover_image": ""
+    },
+    {
+      "title": "Super Cutie Dinosaur",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2025",
+      "url": "https://apps.apple.com/au/app/super-cutie-dinosaur/id6745801491",
+      "desc": "Super Cutie Dinosaur",
+      "cover_image": ""
+    },
+    {
+      "title": "Cutie Fox Sticker",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2025",
+      "url": "https://apps.apple.com/au/app/cutie-fox-sticker/id6744468775",
+      "desc": "Cutie Fox Sticker",
+      "cover_image": ""
+    },
+    {
+      "title": "Hoppy Easter Bunny Sticker",
+      "platform": "iOS",
+      "feature": "Swift",
+      "date": "2025",
+      "url": "https://apps.apple.com/au/app/hoppy-easter-bunny-sticker/id6744621462",
+      "desc": "Hoppy Easter Bunny Sticker",
       "cover_image": ""
     }
   ],
